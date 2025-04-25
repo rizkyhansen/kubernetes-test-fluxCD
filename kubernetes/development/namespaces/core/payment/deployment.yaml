@@ -4,7 +4,7 @@ metadata:
   name: payment
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: payment
@@ -25,4 +25,3 @@ spec:
         envFrom:
         - secretRef:
             name: payment-secret
-            #
