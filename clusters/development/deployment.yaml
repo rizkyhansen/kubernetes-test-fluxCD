@@ -29,7 +29,7 @@ metadata:
   name: development
   namespace: flux-system
 spec:
-  interval: 2m0s
+  interval: 1m0s
   path: ./kubernetes/development/namespaces
   prune: true
   sourceRef:
