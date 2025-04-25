@@ -1,24 +1,37 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: myapp
+#   namespace: default
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: myapp
+#   template:
+#     metadata:
+#       labels:
+#         app: myapp
+#     spec:
+#       containers:
+#       - name: myapp
+#         image: nginx:alpine
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "100m"
+#         ports:
+#         - containerPort: 80
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
 metadata:
-  name: myapp
-  namespace: default
+  name: Development
+  namespace: flux-system
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-        image: nginx:alpine
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "100m"
-        ports:
-        - containerPort: 80
+  interval: 2m0s
+  path: ./kubernetes/development/namespaces
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
