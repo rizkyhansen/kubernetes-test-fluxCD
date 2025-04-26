@@ -4,7 +4,7 @@ metadata:
   name: payment
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: payment
@@ -22,3 +22,6 @@ spec:
             cpu: "100m"
         ports:
         - containerPort: 80
+        envFrom:
+        - secretRef:
+            name: payment-secret
