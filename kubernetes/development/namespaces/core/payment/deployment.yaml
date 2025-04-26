@@ -24,4 +24,4 @@ spec:
         - containerPort: 80
         envFrom:
         - secretRef:
-            name: payment-secret
+            name: sops-age
